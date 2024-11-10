@@ -1,0 +1,385 @@
+{
+	"info": {
+		"_postman_id": "1d981305-5332-4ef0-894e-6463dfaba573",
+		"name": "Magic App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26564924"
+	},
+	"item": [
+		{
+			"name": "Workers",
+			"item": [
+				{
+					"name": "Get All Workers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{workerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/worker/all",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"worker",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Worker Details By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/worker/6730e15469501d8b0781f6f5",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"worker",
+								"6730e15469501d8b0781f6f5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Best Workers in finishing Missions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/worker/mostCompleted",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"worker",
+								"mostCompleted"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a New Worker",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Ahmed\",\r\n    \"weightLimit\":150,\r\n    \"password\":\"123456ss\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/worker/add",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"worker",
+								"add"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Items",
+			"item": [
+				{
+					"name": "Get All Items",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{workerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/item/all",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"item",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Item By ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{workerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/item/details/6730e1afe3ae8d22c6e08cbc",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"item",
+								"details",
+								"6730e1afe3ae8d22c6e08cbc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a New Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{workerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Tablet\",\r\n    \"weight\":25\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/item/add",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"item",
+								"add"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Missions",
+			"item": [
+				{
+					"name": "Get All Missions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{workerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/mission/all",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"mission",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Mission By ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{workerToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/mission/details/6730e202e3ae8d22c6e08cc4",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"mission",
+								"details",
+								"6730e202e3ae8d22c6e08cc4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a New Mission",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"worker\":\"6730e7f4302eedb538c0142c\",\r\n    \"items\":[\r\n        {\r\n            \"itemId\":\"6730e805302eedb538c01432\"\r\n        }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/mission/add",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"mission",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Load an Item",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"missionId\":\"6730e202e3ae8d22c6e08cc4\",\r\n    \"itemId\":\"6730e329da7610350b4802fa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/mission/loadItem",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"mission",
+								"loadItem"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Finish a Mission",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"missionId\":\"6730e80d302eedb538c01434\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/mission/endMission",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"mission",
+								"endMission"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "localhost",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "workerToken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzMwZTE1NDY5NTAxZDhiMDc4MWY2ZjUiLCJpYXQiOjE3MzEyNTY2NjB9.ptgnNi0peE7KwaSZy50C1qaD50OJpgFSvIcRPXNKrdY",
+			"type": "string"
+		}
+	]
+}
