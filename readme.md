@@ -51,7 +51,7 @@ Welcome to **Magic Transporters** - a streamlined, magical way to handle item lo
 
 1. **Clone the Repository**
     ```bash
-    git clone <repository-url>
+    git clone https://gitlab.com/eng.mohammadbali/magic-transporters
     cd magic-transporters
     ```
 
