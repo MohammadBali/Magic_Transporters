@@ -1,9 +1,9 @@
 import express, {Request, Response} from 'express';
 import auth from "../middleware/auth";
 import {Worker} from "../models/MagicWorker";
-import {Item} from "../models/MagicItem";
 import {Mission} from "../models/MagicMission";
 
+/**Worker Router, contains the Endpoints of workers & their logic**/
 const router = express.Router();
 
 //Get All Workers in The System
@@ -291,5 +291,143 @@ router.get('/worker/mostCompleted', async (req: Request, res: Response): Promise
     }
 });
 
+//Get Current Worker State
+/**
+ * @swagger
+ * /worker/currentState:
+ *   get:
+ *     summary: Retrieve the current state of a worker.
+ *     description: Returns the current activity state of a worker (e.g., resting, loading, on-mission) based on the provided workerId.
+ *     tags:
+ *       - Worker
+ *     parameters:
+ *       - in: body
+ *         name: workerId
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: ID of the worker whose state is to be fetched.
+ *     responses:
+ *       200:
+ *         description: Successful retrieval of worker's current state.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: resting
+ *       400:
+ *         description: Missing workerId parameter.
+ *       404:
+ *         description: Worker not found.
+ *       500:
+ *         description: Error while retrieving the worker's current state.
+ */
+router.get('/worker/currentState', async (req: Request, res: Response):Promise<any> => {
+
+    try
+    {
+        if(!req.body.workerId)
+        {
+            return res.status(400).send({error:'Missing WorkerId Parameter'});
+        }
+
+        const worker = await Worker.findById(req.body.workerId);
+
+        if(!worker)
+        {
+            return res.status(404).send({error:'No Such Worker with Such ID'});
+        }
+
+        return res.status(200).send({status:worker.state});
+    }
+    catch (e:any)
+    {
+        return res.status(500).send({error:'Error While Getting Current state', message:e.message});
+    }
+});
+
+//Login a Worker and send a token
+/**
+ * @swagger
+ * /worker/login:
+ *   post:
+ *     summary: Login a worker and retrieve an authentication token.
+ *     description: Allows a worker to log in by providing an email and password, returning an authentication token upon success.
+ *     tags:
+ *       - Worker
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 example: worker@example.com
+ *               password:
+ *                 type: string
+ *                 example: workerpassword123
+ *     responses:
+ *       200:
+ *         description: Successful login with worker details and token.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 worker:
+ *                   type: object
+ *                   properties:
+ *                     _id:
+ *                       type: string
+ *                       example: 603d2f30f1a4b9128c8e4b3a
+ *                     name:
+ *                       type: string
+ *                       example: John Doe
+ *                     weightLimit:
+ *                       type: integer
+ *                       example: 100
+ *                     state:
+ *                       type: string
+ *                       example: resting
+ *                 token:
+ *                   type: string
+ *                   example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+ *                 success:
+ *                   type: integer
+ *                   example: 1
+ *       400:
+ *         description: Missing email or password parameter.
+ *       500:
+ *         description: Error while attempting to sign in.
+ */
+router.post('/worker/login', async (req:Request,res:Response):Promise<any>=>{
+
+    try
+    {
+        if(!req.body.email || !req.body.password)
+        {
+            return res.status(400).send({error:'Missing Email or Password Parameter'});
+        }
+
+        //Check if this email and password matches a current worker
+        //@ts-ignore
+        const worker= await Worker.findByCredentials(req.body.email,req.body.password);
+
+        //create a token
+        const token= await worker.generateAuthToken();
+
+        return res.send({worker,token, success:1});
+    }
+
+    catch (e:any)
+    {
+        return res.status(500).send({error:'Could not sign you in', message:e.message});
+    }
+});
 
 export default router;

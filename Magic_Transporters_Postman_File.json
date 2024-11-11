@@ -80,7 +80,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"Ahmed\",\r\n    \"weightLimit\":150,\r\n    \"password\":\"123456ss\"\r\n}",
+							"raw": "{\r\n    \"name\":\"ahmed\",\r\n    \"email\":\"ahmed@test.com\",\r\n    \"weightLimit\":75,\r\n    \"password\":\"123456ss\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -95,6 +95,63 @@
 							"path": [
 								"worker",
 								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign in",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"mohammadbali@test.com\",\r\n    \"password\":\"123456ss\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/worker/login",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"worker",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Current Worker State",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"workerId\":\"6731dc570f41c45e916ac7ed\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/worker/currentState",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"worker",
+								"currentState"
 							]
 						}
 					},
@@ -378,7 +435,7 @@
 		},
 		{
 			"key": "workerToken",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzMwZTE1NDY5NTAxZDhiMDc4MWY2ZjUiLCJpYXQiOjE3MzEyNTY2NjB9.ptgnNi0peE7KwaSZy50C1qaD50OJpgFSvIcRPXNKrdY",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzMxZGM0NzBmNDFjNDVlOTE2YWM3ZTkiLCJpYXQiOjE3MzEzMjA5MDN9.y7ZPuuXQz0qYnwnqONNqKfZejLiG6w5iKQJxgMvB2pQ",
 			"type": "string"
 		}
 	]

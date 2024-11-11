@@ -2,8 +2,19 @@ import mongoose, {Document, Schema} from 'mongoose';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import constants from "../shared/constants";
+import validator from "validator";
 
-/**Interface of this entity**/
+/**Interface of this entity
+ * The Worker members
+ * @member _id ObjectID, the ID of this Worker
+ * @member name String, the name of this Worker
+ * @member weightLimit Number, The Weight Limit that this worker can handle; should not be exceeded
+ * @member password String, hashed Password
+ * @member state String, The State of this Worker
+ * @member token List<String>, contains every token of this user
+ * @member createdAt any, The Date of this worker creation
+ * @member updatedAt any, The last date when this worker was updated
+ * **/
 export interface MagicWorker extends Document
 {
     _id: Schema.Types.ObjectId;
@@ -14,6 +25,7 @@ export interface MagicWorker extends Document
     state: 'resting' | 'loading' | 'onMission';
     token: [{token:string}],
 
+    email:String;
     createdAt:any,
     updatedAt:any,
 
@@ -50,6 +62,21 @@ const workerSchema: Schema = new Schema({
             if(value.toLowerCase().includes('password')) //The Password contains the word password
             {
                 throw Error('Password format is not correct');
+            }
+        },
+    },
+
+    email:{
+        type: String,
+        required: true,
+        unique:true,
+        trim: true,
+        lowercase:true,
+        validate(value: any)
+        {
+            if(!validator.isEmail(value))
+            {
+                throw Error('The Email Provided is not a correct syntax.');
             }
         },
     },

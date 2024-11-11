@@ -3,7 +3,12 @@ import jwt from "jsonwebtoken";
 import constants from '../shared/constants';
 import {Worker} from "../models/MagicWorker";
 
-/**Authenticate The User **/
+/**Authenticate The User
+ * @param req the API's request; so we can extract the header and add fields if needed
+ * @param res the API's response; usually if the authentication has failed then we delicate the return from here
+ * @param next allow the API to continue into handling if the authentication is a success
+ * @return Promise<void> ; no data is returned
+ * **/
 const userAuth=async(req:express.Request, res:express.Response, next: express.NextFunction) =>
 {
     try

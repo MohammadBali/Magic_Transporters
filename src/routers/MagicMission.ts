@@ -1,10 +1,9 @@
 import express, {Request, Response} from 'express';
-
 import {Worker} from "../models/MagicWorker";
 import {Mission} from "../models/MagicMission";
 import {Item} from "../models/MagicItem";
-import auth from "../middleware/auth";
 
+/**Mission Router, contains the Endpoints of missions & their logic**/
 const router = express.Router();
 
 //Get All Missions in the system

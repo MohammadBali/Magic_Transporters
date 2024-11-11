@@ -8,8 +8,8 @@ Welcome to **Magic Transporters** - a streamlined, magical way to handle item lo
 2. **Add and Manage Magic Items** - Register items, each with a defined weight, to be moved by Magic Workers.
 3. **Mission Management**:
     - **Loading** - Load items onto a Magic Mover, updating their state to "loading".
-    - **On-Mission** - Start a mission, locking the mover into the "on-mission" state and preventing additional loading.
-    - **Mission Completion** - Complete a mission, resetting the mover’s state to "resting" and clearing all loaded items.
+    - **On-Mission** - Start a mission, locking the mover into the "on-mission" state and preventing additional loading, sets the mission state into 'in_progress'.
+    - **Mission Completion** - Complete a mission, resetting the mover’s state to "resting" and sets the mission state into 'finished'
 4. **Leaderboard** - View a list of the Magic Workers who have completed the most missions.
 5. **Authentication** - Authentication middleware secures mission and item management.
 6. **Swagger Documentation** - Live documentation with Swagger UI.

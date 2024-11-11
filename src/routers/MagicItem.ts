@@ -3,6 +3,7 @@ import auth from "../middleware/auth";
 import {Item} from "../models/MagicItem";
 import {Mission} from "../models/MagicMission";
 
+/**Item Router, contains the Endpoints of items & their logic**/
 const router = express.Router();
 
 //Get All Items in the system
@@ -166,7 +167,7 @@ router.get('/item/details/:id', async (req: Request, res: Response):Promise<any>
  *       500:
  *         description: Server error while adding the item.
  */
-router.post('/item/add',auth.userAuth, async(req: Request, res: Response):Promise<any> => {
+router.post('/item/add', async(req: Request, res: Response):Promise<any> => {
     try
     {
         const item = new Item(req.body);

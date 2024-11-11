@@ -3,12 +3,13 @@ import mongoose, {Document, Schema} from 'mongoose';
 /**
  * MagicMission is the Mission that the worker operates in
  * @member _id ObjectID, the ID of this mission
- * @member worker any, Type is any because it maybe just his ID or a populated field
- * @member items any, Type is any because it maybe just his ID or a populated field
+ * @member worker any, Type is any because it may be just his ID or a populated field
+ * @member items any, Type is any because it may be just his ID or a populated field
  * @member state String, The State of this Mission
  * @member createdAt any, The Date of this mission creation
  * @member updatedAt any, The last date when this mission was updated
  * **/
+
 export interface MagicMission extends Document {
     _id:Schema.Types.ObjectId;
     worker:any;
@@ -50,7 +51,7 @@ const missionSchema: Schema = new Schema({
 
 export const Mission = mongoose.model<MagicMission>('Mission', missionSchema);
 
-// Add virtual for populating items based on itemId
+// Add virtual for populating items based on itemId (if needed)
 missionSchema.virtual('populatedItems',{
     ref:'Item',
     localField:'items.itemId',
