@@ -2,7 +2,7 @@
 
 Welcome to **Magic Transporters** - a streamlined, magical way to handle item logistics. This application provides a robust and RESTful API for managing *Magic Workers*, who perform item transportation missions with the power of virtual magic. With a well-structured TypeScript/Express backend, MongoDB integration, and comprehensive documentation, Magic Transporters ensures reliable handling of transportation tasks with a touch of enchantment.
 
-## 🚀 Features
+## Features
 
 1. **Add and Manage Magic Workers** - Create and manage the "workers" responsible for item transport missions.
 2. **Add and Manage Magic Items** - Register items, each with a defined weight, to be moved by Magic Workers.
@@ -18,7 +18,7 @@ Welcome to **Magic Transporters** - a streamlined, magical way to handle item lo
 
 ---
 
-## 🛠️ Technologies
+## Technologies
 
 - **Node.js** (Express) - Backend server
 - **TypeScript** - Type safety and improved developer experience
@@ -27,7 +27,7 @@ Welcome to **Magic Transporters** - a streamlined, magical way to handle item lo
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 - **`index.ts`** - Entry point, setting up the server, routes, and Swagger documentation.
 - **Models**
@@ -40,7 +40,7 @@ Welcome to **Magic Transporters** - a streamlined, magical way to handle item lo
 
 ---
 
-## 🖥️ Setup
+## Setup
 
 ### Prerequisites
 - **Node.js** and **npm**
@@ -77,7 +77,7 @@ Welcome to **Magic Transporters** - a streamlined, magical way to handle item lo
    nodemon src/index.ts
    ```
 
-## 📋 API Endpoints
+## API Endpoints
 
 **Magic Workers**
 
